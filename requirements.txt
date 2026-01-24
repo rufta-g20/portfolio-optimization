@@ -1,0 +1,15 @@
+# Data Extraction & Manipulation
+yfinance
+pandas
+numpy
+
+# Visualization
+matplotlib
+seaborn
+
+# Statistical Analysis
+statsmodels
+scipy
+
+# Notebook environment
+ipykernel
