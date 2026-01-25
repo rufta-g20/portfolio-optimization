@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from statsmodels.tsa.stattools import adfuller
+from sklearn.preprocessing import MinMaxScaler
 
 def fetch_financial_data(tickers, start_date, end_date):
     """Fetches Adjusted Close price data from Yahoo Finance."""
@@ -42,3 +43,15 @@ def calculate_risk_metrics(returns, annual_rf=0.02):
     sharpe = (excess_returns.mean() / returns.std()) * np.sqrt(252)
     var_95 = np.percentile(returns, 5)
     return sharpe, var_95
+
+def prepare_lstm_data(data, window_size=60):
+    """Prepares sequences for LSTM training."""
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    scaled_data = scaler.fit_transform(data.values.reshape(-1, 1))
+    
+    X, y = [], []
+    for i in range(window_size, len(scaled_data)):
+        X.append(scaled_data[i-window_size:i, 0])
+        y.append(scaled_data[i, 0])
+        
+    return np.array(X), np.array(y), scaler
