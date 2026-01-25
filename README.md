@@ -48,11 +48,10 @@ portfolio-optimization/
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-username/portfolio-optimization.git
+git clone https://github.com/rufta-g20/portfolio-optimization.git
 cd portfolio-optimization
 
 ```
-
 
 2. **Create a virtual environment:**
 ```bash
@@ -60,7 +59,6 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 ```
-
 
 3. **Install dependencies:**
 ```bash
@@ -70,41 +68,24 @@ pip install -r requirements.txt
 
 ### Usage
 
-* To explore the data and preprocessing steps, open `notebooks/Task_1_EDA.ipynb`.
-* To view or train the forecasting models, run `notebooks/Task_2_Modeling.ipynb`.
+* To explore the data and preprocessing steps, open `notebooks/EDA_Financial_Data_Task1.ipynb`.
+* To view or train the forecasting models, run `notebooks/Time_Series_Forecasting_Task2.ipynb`.
 
 ## Key Insights So Far
 
 ### Task 1: Preprocessing and EDA
 
-* 
-**Data Quality:** Cleaned historical data (2015-2026) using linear interpolation for missing values.
-
-
-* 
-**Stationarity:** Raw prices were found to be non-stationary, while daily returns are stationary (-value = 0.0000), justifying the use of differencing for modeling.
-
-
-* 
-**Risk Metrics:** Identified TSLA as a high-risk/high-reward asset (VaR -5.25%) compared to the stability of BND.
-
-
+* **Data Quality:** Cleaned historical data (2015-2026) using linear interpolation for missing values.
+* **Stationarity:** Raw prices were found to be non-stationary, while daily returns are stationary (-value = 0.0000), justifying the use of differencing for modeling.
+* **Risk Metrics:** Identified TSLA as a high-risk/high-reward asset (VaR -5.25%) compared to the stability of BND.
 
 ### Task 2: Forecasting Models
 
-* 
-**ARIMA:** Identified an ARIMA(0,1,0) "Random Walk" model as the baseline, which suggests that price movements are highly efficient and difficult to predict with linear statistical methods.
-
-
-* 
-**LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 4.7%.
-
-
+* **ARIMA:** Identified an ARIMA(0,1,0) "Random Walk" model as the baseline, which suggests that price movements are highly efficient and difficult to predict with linear statistical methods.
+* **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 4.7%.
 
 ## Future Tasks
 
 * **Task 3:** Generate future market trend forecasts (6-12 months).
-* 
-**Task 4:** Portfolio optimization using the Efficient Frontier.
-* 
-**Task 5:** Strategy backtesting against a 60/40 benchmark portfolio.
+* **Task 4:** Portfolio optimization using the Efficient Frontier.
+* **Task 5:** Strategy backtesting against a 60/40 benchmark portfolio.
