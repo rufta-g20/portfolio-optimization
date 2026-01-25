@@ -13,3 +13,10 @@ scipy
 
 # Notebook environment
 ipykernel
+
+# For ARIMA optimization
+pmdarima
+
+# For LSTM (Deep Learning)
+tensorflow
+scikit-learn
