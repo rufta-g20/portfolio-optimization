@@ -16,3 +16,5 @@ data/processed/
 
 # VS Code settings
 .vscode/
+
+models/
