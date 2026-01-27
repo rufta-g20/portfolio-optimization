@@ -24,12 +24,15 @@ portfolio-optimization/
 │   └── processed/              # Cleaned and processed datasets 
 ├── notebooks/
 │   ├── __init__.py
-│   ├── Task_1_EDA.ipynb        # Data exploration and analysis
-│   ├── Task_2_Modeling.ipynb   # Forecasting model development
+│   ├── EDA_Financial_Data_Task1.ipynb         # Data exploration and analysis
+│   ├── Time_Series_Forecasting_Task2.ipynb    # Forecasting model development
+│   ├── Future_Forecasting_Task3.ipynb         # Future trend & risk projection
 │   └── README.md
 ├── src/
 │   ├── __init__.py             # Source code for modular logic 
-│   └── data_utils.py           # Helper functions for data processing
+│   └── data_utils.py           # Modularized logic for scaling & modeling
+├── models/
+│   └── tsla_lstm_model.keras    # Saved trained LSTM model
 ├── tests/
 │   └── __init__.py             # Unit tests 
 └── scripts/
@@ -82,10 +85,16 @@ pip install -r requirements.txt
 ### Task 2: Forecasting Models
 
 * **ARIMA:** Identified an ARIMA(0,1,0) "Random Walk" model as the baseline, which suggests that price movements are highly efficient and difficult to predict with linear statistical methods.
-* **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 4.7%.
+* **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 5.56%.
+* **Model Selection:** Selected LSTM for future forecasting due to its ability to capture non-linear volatility clusters.
+
+### Task 3: Future Market Trends
+
+* **Forecast:** Generated a 6-month recursive forecast for TSLA with 95% confidence intervals.
+* **Risk Assessment:** Identified a "Fan Chart" effect, where uncertainty increases over time, suggesting the model is most effective for tactical 30-day outlooks.
+* **Opportunities:** Identified potential price momentum windows while quantifying the downside risk via widening lower bounds.
 
 ## Future Tasks
 
-* **Task 3:** Generate future market trend forecasts (6-12 months).
-* **Task 4:** Portfolio optimization using the Efficient Frontier.
+* **Task 4:** Portfolio optimization using the Efficient Frontier (Maximizing Sharpe Ratio).
 * **Task 5:** Strategy backtesting against a 60/40 benchmark portfolio.
