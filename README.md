@@ -90,7 +90,7 @@ pip install -r requirements.txt
 * **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 5.07%.
 * **Model Selection:** Selected LSTM for future forecasting due to its ability to capture non-linear volatility clusters.
 
-![LSTM vs ARIMA](../notebooks/output5.png)
+![LSTM vs ARIMA](./notebooks/output5.png)
 
 ### Task 3: Future Market Trends
 
@@ -99,7 +99,7 @@ pip install -r requirements.txt
 * **Opportunities:** Identified potential price momentum windows while quantifying the downside risk via widening lower bounds.
 
 The LSTM model captures the "Fan Chart" effect, where uncertainty expands as the forecast horizon grows.
-![TSLA Forecast](../notebooks/output6.png)
+![TSLA Forecast](./notebooks/output6.png)
 
 ### Task 4: Portfolio Optimization
 
@@ -109,7 +109,7 @@ The LSTM model captures the "Fan Chart" effect, where uncertainty expands as the
 * **Risk-Return Tradeoff:** Successfully mapped the Efficient Frontier, identifying a portfolio with an expected annual return of 13.54% and a Sharpe Ratio of 0.24.
 
 The Efficient Frontier identifies the Max Sharpe and Min Volatility portfolios based on forecasted returns.
-![Efficient Frontier](../notebooks/output8.png)
+![Efficient Frontier](./notebooks/output8.png)
 
 ### Task 5: Strategy Backtesting
 
@@ -119,4 +119,4 @@ The Efficient Frontier identifies the Max Sharpe and Min Volatility portfolios b
 * **Strategic Conclusion:** Future iterations should combine LSTM price forecasts with Risk Parity constraints to balance growth and capital preservation.
 
 A comparison of the AI-Optimized strategy against a traditional 60/40 benchmark.
-![Backtest Results](../notebooks/output9.png)
+![Backtest Results](./notebooks/output9.png)
