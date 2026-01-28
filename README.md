@@ -27,6 +27,7 @@ portfolio-optimization/
 │   ├── EDA_Financial_Data_Task1.ipynb         # Data exploration and analysis
 │   ├── Time_Series_Forecasting_Task2.ipynb    # Forecasting model development
 │   ├── Future_Forecasting_Task3.ipynb         # Future trend & risk projection
+│   ├── Optimization_Task4.ipynb
 │   └── README.md
 ├── src/
 │   ├── __init__.py             # Source code for modular logic 
@@ -85,7 +86,7 @@ pip install -r requirements.txt
 ### Task 2: Forecasting Models
 
 * **ARIMA:** Identified an ARIMA(0,1,0) "Random Walk" model as the baseline, which suggests that price movements are highly efficient and difficult to predict with linear statistical methods.
-* **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 5.56%.
+* **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 5.07%.
 * **Model Selection:** Selected LSTM for future forecasting due to its ability to capture non-linear volatility clusters.
 
 ### Task 3: Future Market Trends
@@ -94,7 +95,13 @@ pip install -r requirements.txt
 * **Risk Assessment:** Identified a "Fan Chart" effect, where uncertainty increases over time, suggesting the model is most effective for tactical 30-day outlooks.
 * **Opportunities:** Identified potential price momentum windows while quantifying the downside risk via widening lower bounds.
 
+### Task 4: Portfolio Optimization
+
+* **Optimization Framework:** Applied Modern Portfolio Theory (MPT) to combine the LSTM "Active View" of TSLA with historical data for BND and SPY.
+* **Asset Correlation:** Identified a strong positive correlation between SPY and TSLA (0.86), while BND remains negatively correlated (-0.8), confirming its role as a hedge.
+* **Optimal Allocation:** The Maximum Sharpe Ratio portfolio recommended a 100% allocation to SPY, effectively avoiding TSLA due to its negative forecasted return (-78.84%) and high volatility.
+* **Risk-Return Tradeoff:** Successfully mapped the Efficient Frontier, identifying a portfolio with an expected annual return of 13.54% and a Sharpe Ratio of 0.24.
+
 ## Future Tasks
 
-* **Task 4:** Portfolio optimization using the Efficient Frontier (Maximizing Sharpe Ratio).
 * **Task 5:** Strategy backtesting against a 60/40 benchmark portfolio.
