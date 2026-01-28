@@ -20,3 +20,4 @@ pmdarima
 # For LSTM (Deep Learning)
 tensorflow
 scikit-learn
+PyPortfolioOpt

@@ -29,8 +29,16 @@ def calculate_risk_metrics(returns, annual_rf=0.02):
     return sharpe, var_95
 
 def prepare_lstm_data(data, window_size=60):
+    """Prepares sequences for LSTM. Handles Series, DataFrames, and Arrays."""
     scaler = MinMaxScaler(feature_range=(0, 1))
-    scaled_data = scaler.fit_transform(data.values.reshape(-1, 1))
+    
+    # Convert to numpy array first, then reshape
+    if isinstance(data, (pd.Series, pd.DataFrame)):
+        vals = data.values.reshape(-1, 1)
+    else:
+        vals = np.array(data).reshape(-1, 1)
+        
+    scaled_data = scaler.fit_transform(vals)
     X, y = [], []
     for i in range(window_size, len(scaled_data)):
         X.append(scaled_data[i-window_size:i, 0])
@@ -49,6 +57,21 @@ def build_lstm_model(input_shape):
     ])
     model.compile(optimizer='adam', loss='mean_squared_error')
     return model
+
+def generate_forecast(model, data, scaler, window_size=60, horizon=126):
+    """Generates future price predictions recursively."""
+    # Ensure we use the last window_size values
+    last_window = data.values[-window_size:] if hasattr(data, 'values') else data[-window_size:]
+    current_batch = scaler.transform(last_window.reshape(-1, 1)).reshape((1, window_size, 1))
+    
+    preds = []
+    for _ in range(horizon):
+        next_pred = model.predict(current_batch, verbose=0)
+        preds.append(next_pred[0])
+        # Slide window
+        current_batch = np.append(current_batch[:, 1:, :], [next_pred], axis=1)
+        
+    return scaler.inverse_transform(preds)
 
 def evaluate_model(actual, pred, model_name):
     # Ensure both are converted to numpy arrays and flattened
