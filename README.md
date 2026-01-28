@@ -28,6 +28,7 @@ portfolio-optimization/
 │   ├── Time_Series_Forecasting_Task2.ipynb    # Forecasting model development
 │   ├── Future_Forecasting_Task3.ipynb         # Future trend & risk projection
 │   ├── Optimization_Task4.ipynb
+│   ├── Backtesting_Task5.ipynb
 │   └── README.md
 ├── src/
 │   ├── __init__.py             # Source code for modular logic 
@@ -89,11 +90,16 @@ pip install -r requirements.txt
 * **LSTM:** A Deep Learning LSTM model significantly outperformed ARIMA, capturing non-linear volatility clusters and momentum factors with a MAPE of approximately 5.07%.
 * **Model Selection:** Selected LSTM for future forecasting due to its ability to capture non-linear volatility clusters.
 
+![LSTM vs ARIMA](../notebooks/output5.png)
+
 ### Task 3: Future Market Trends
 
 * **Forecast:** Generated a 6-month recursive forecast for TSLA with 95% confidence intervals.
 * **Risk Assessment:** Identified a "Fan Chart" effect, where uncertainty increases over time, suggesting the model is most effective for tactical 30-day outlooks.
 * **Opportunities:** Identified potential price momentum windows while quantifying the downside risk via widening lower bounds.
+
+The LSTM model captures the "Fan Chart" effect, where uncertainty expands as the forecast horizon grows.
+![TSLA Forecast](../notebooks/output6.png)
 
 ### Task 4: Portfolio Optimization
 
@@ -102,6 +108,15 @@ pip install -r requirements.txt
 * **Optimal Allocation:** The Maximum Sharpe Ratio portfolio recommended a 100% allocation to SPY, effectively avoiding TSLA due to its negative forecasted return (-78.84%) and high volatility.
 * **Risk-Return Tradeoff:** Successfully mapped the Efficient Frontier, identifying a portfolio with an expected annual return of 13.54% and a Sharpe Ratio of 0.24.
 
-## Future Tasks
+The Efficient Frontier identifies the Max Sharpe and Min Volatility portfolios based on forecasted returns.
+![Efficient Frontier](../notebooks/output8.png)
 
-* **Task 5:** Strategy backtesting against a 60/40 benchmark portfolio.
+### Task 5: Strategy Backtesting
+
+* **Backtest Window:** Validated the optimized strategy against a 60/40 (SPY/BND) benchmark from January 2025 to January 2026.
+* **Performance Results:** The 60/40 benchmark outperformed the 100% SPY optimized strategy (21.11% vs. 15.80% total return), highlighting the importance of diversification.
+* **Risk Mitigation:** The LSTM-driven strategy successfully avoided a 100% loss exposure to TSLA's volatility, though it suffered a higher drawdown than the balanced benchmark.
+* **Strategic Conclusion:** Future iterations should combine LSTM price forecasts with Risk Parity constraints to balance growth and capital preservation.
+
+A comparison of the AI-Optimized strategy against a traditional 60/40 benchmark.
+![Backtest Results](../notebooks/output9.png)
